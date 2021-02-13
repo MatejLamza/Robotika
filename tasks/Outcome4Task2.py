@@ -24,7 +24,7 @@ def runProgram():
         img_onlyball_hsv = cv2.bitwise_and(img2, img2, mask=mask)
         img_onlyball = cv2.cvtColor(img_onlyball_hsv, cv2.COLOR_HSV2BGR)
 
-        _, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         imgx, imgy, _ = img_onlyball.shape
         cv2.circle(img_onlyball, (int(imgy / 2), int(imgx / 2)), 3, (0, 127, 0), -1)
