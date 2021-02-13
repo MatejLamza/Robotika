@@ -13,19 +13,23 @@ capture = cv2.VideoCapture(0)
 
 def runProgram():
     while True:
+        # Input source
         capture = cv2.VideoCapture(0)
-        _, imageBg, imgHsv = helper.videoConvert(capture)
 
-        redLight, yellowLight, greenLight = fetchTrafficLightColours(imgHsv, ImageBg)
+        ret, img_bgr, img_hsv = helper.videoConvert(capture)
+        if not ret:
+            break
 
-        if redLight or yellowLight or greenLight:
-            processTrafficLight(redLight, yellowLight, greenLight)
+        ellipse_red, ellipse_yellow, ellipse_green = get_ellipses(img_hsv, img_bgr)
 
-        cv2.imshow('Outcome 3 Task3', ImageBg)
+        if ellipse_red or ellipse_yellow or ellipse_green:
+            process_ellipses(ellipse_red, ellipse_yellow, ellipse_green)
 
-        if(cv2.waitKey(1) & 0xFF) == ord('q'):
-            break;
+        cv2.imshow('Traffic light detection', img_bgr)
 
+        if (cv2.waitKey(1) & 0xFF) == ord('q'):
+            break
+        
         capture.release()
     cv2.destroyAllWindows()
 
