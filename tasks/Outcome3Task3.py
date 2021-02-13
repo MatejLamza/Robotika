@@ -14,8 +14,6 @@ capture = cv2.VideoCapture(0)
 def runProgram():
     while True:
         # Input source
-        capture = cv2.VideoCapture(0)
-
         ret, img_bgr, img_hsv = helper.videoConvert(capture)
         if not ret:
             break
