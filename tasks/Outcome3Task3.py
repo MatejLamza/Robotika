@@ -13,9 +13,9 @@ capture = cv2.VideoCapture(0)
 
 def runProgram():
     while True:
-        _, imageBg, imageHsv = helper.videoConvert(capture)
+        _, imageBg, imgHsv = helper.videoConvert(capture)
 
-        redLight, yellowLight, greenLight = fetchTrafficLightColours(ImageHsv, ImageBg)
+        redLight, yellowLight, greenLight = fetchTrafficLightColours(imgHsv, ImageBg)
 
         if redLight or yellowLight or greenLight:
             processTrafficLight(redLight, yellowLight, greenLight)
@@ -29,17 +29,17 @@ def runProgram():
     cv2.destroyAllWindows()
 
 
-def fetchTrafficLightColours(ImageHsv, ImageBg):
-    redMask1 = helper.getMask(ImageHsv, redLow1, redUp1, min_sat=110, min_val=60)
-    redMask2 = helper.getMask(ImageHsv, redLow2, redUp2, min_sat=110, min_val=60)
+def fetchTrafficLightColours(imgHsv, ImageBg):
+    redMask1 = helper.getMask(imgHsv, redLow1, redUp1, min_sat=110, min_val=60)
+    redMask2 = helper.getMask(imgHsv, redLow2, redUp2, min_sat=110, min_val=60)
     redMask = redMask1 | redMask2
 
     redLight = helper.createEllipse(redMask, ImageBg)
 
-    yellowMask = helper.getMask(ImageHsv, yellowLow, yellowUp, min_sat=110, min_val=60)
+    yellowMask = helper.getMask(imgHsv, yellowLow, yellowUp, min_sat=110, min_val=60)
     yellowLight = helper.createEllipse(yellowMask, ImageBg)
 
-    greenMask = helper.getMask(ImageHsv, greenLow, greenUp)
+    greenMask = helper.getMask(imgHsv, greenLow, greenUp)
     greenLight = helper.createEllipse(greenMask, ImageBg)
 
     return redLight, yellowLight, greenLight
