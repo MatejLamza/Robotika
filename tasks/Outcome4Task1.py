@@ -15,6 +15,8 @@ def runProgram():
             mt.rotateOneCircle()
 
         cv2.imshow('Outcome 4 Task 1', image)
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
     
     capture.release()
     cv2.destroyAllWindows()

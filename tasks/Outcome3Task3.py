@@ -21,6 +21,8 @@ def runProgram():
             processTrafficLight(redLight, yellowLight, greenLight)
 
         cv2.imshow('Outcome 3 Task3', ImageBg)
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
 
     capture.release()
     cv2.destroyAllWindows()

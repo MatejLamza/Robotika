@@ -30,7 +30,8 @@ def runProgram():
 
         cv2.imshow('frame', paper)
         show_contours = []
-
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
 
     capture.release()
     cv2.destroyAllWindows()

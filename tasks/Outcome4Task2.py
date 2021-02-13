@@ -50,6 +50,9 @@ def runProgram():
                         print("found")
                         mt.forwardBit()
 
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
+
     capture.release()
     cv2.destroyAllWindows()
 
