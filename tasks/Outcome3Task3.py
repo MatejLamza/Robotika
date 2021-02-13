@@ -13,36 +13,33 @@ capture = cv2.VideoCapture(0)
 
 def runProgram():
     while True:
-        # Input source
-        ret, img_bgr, img_hsv = helper.videoConvert(capture)
-        if not ret:
-            break
+        _, imageBg, imgHsv = helper.videoConvert(capture)
 
-        ellipse_red, ellipse_yellow, ellipse_green = fetchTrafficLightColours(img_hsv, img_bgr)
+        redLight, yellowLight, greenLight = fetchTrafficLightColours(ImageHsv, ImageBg)
 
-        if ellipse_red or ellipse_yellow or ellipse_green:
-            process_ellipses(ellipse_red, ellipse_yellow, ellipse_green)
+        if redLight or yellowLight or greenLight:
+            processTrafficLight(redLight, yellowLight, greenLight)
 
-        cv2.imshow('Traffic light detection', img_bgr)
+        cv2.imshow('Outcome 3 Task3', ImageBg)
 
-        if (cv2.waitKey(1) & 0xFF) == ord('q'):
-            break
-        
-        capture.release()
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
+
+    capture.release()
     cv2.destroyAllWindows()
 
 
-def fetchTrafficLightColours(imgHsv, ImageBg):
-    redMask1 = helper.getMask(imgHsv, redLow1, redUp1, min_sat=110, min_val=60)
-    redMask2 = helper.getMask(imgHsv, redLow2, redUp2, min_sat=110, min_val=60)
+def fetchTrafficLightColours(ImageHsv, ImageBg):
+    redMask1 = helper.getMask(ImageHsv, redLow1, redUp1, min_sat=110, min_val=60)
+    redMask2 = helper.getMask(ImageHsv, redLow2, redUp2, min_sat=110, min_val=60)
     redMask = redMask1 | redMask2
 
     redLight = helper.createEllipse(redMask, ImageBg)
 
-    yellowMask = helper.getMask(imgHsv, yellowLow, yellowUp, min_sat=110, min_val=60)
+    yellowMask = helper.getMask(ImageHsv, yellowLow, yellowUp, min_sat=110, min_val=60)
     yellowLight = helper.createEllipse(yellowMask, ImageBg)
 
-    greenMask = helper.getMask(imgHsv, greenLow, greenUp)
+    greenMask = helper.getMask(ImageHsv, greenLow, greenUp)
     greenLight = helper.createEllipse(greenMask, ImageBg)
 
     return redLight, yellowLight, greenLight
