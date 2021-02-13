@@ -14,7 +14,7 @@ def runProgram():
         ret, image = cap.read()
         paper = image
         ret, thresh_gray = cv2.threshold(cv2.cvtColor(paper, cv2.COLOR_BGR2GRAY), 170, 255, cv2.THRESH_BINARY)
-        image, contours, _ = cv2.findContours(thresh_gray, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        image, contours = cv2.findContours(thresh_gray, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         listCountours = list(contours)
         if len(listCountours) > 0:
             max_cnt = helper.getBiggestContour(listCountours)
