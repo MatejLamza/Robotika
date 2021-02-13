@@ -15,7 +15,7 @@ def runProgram():
     while True:
         _, imageBg, imgHsv = helper.videoConvert(capture)
 
-        redLight, yellowLight, greenLight = fetchTrafficLightColours(ImageHsv, ImageBg)
+        redLight, yellowLight, greenLight = fetchTrafficLightColours(imgHsv, ImageBg)
 
         if redLight or yellowLight or greenLight:
             processTrafficLight(redLight, yellowLight, greenLight)

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from common import helper
-from helpers import motors as mt
+from common import motors as mt
 from PIL import Image
 
 # Input source
