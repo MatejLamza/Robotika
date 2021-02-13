@@ -12,7 +12,7 @@ def runProgram():
     while True:
         _, imageBg, imgHsv = helper.videoConvert(capture)
        
-        greenMask = helper.get_mask(imgHsv, green_lower, green_upper)
+        greenMask = helper.getMask(imgHsv, green_lower, green_upper)
         contours = list(helper.getContours(greenMask))
 
         if len(contours) > 0:
@@ -22,6 +22,9 @@ def runProgram():
                 mts.forwardBit()
 
         cv2.imshow('Outcome 3 Task 1', imageBg)
+
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
 
     capture.release()
     cv2.destroyAllWindows()

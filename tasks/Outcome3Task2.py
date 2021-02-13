@@ -24,6 +24,9 @@ def runProgram():
 
         cv2.imshow('Outcome 3 Task 2', imageBg)
 
+        if(cv2.waitKey(1) & 0xFF) == ord('q'):
+            break;
+
     capture.release()
     cv2.destroyAllWindows()
 
