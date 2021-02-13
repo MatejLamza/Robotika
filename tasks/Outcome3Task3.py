@@ -18,7 +18,7 @@ def runProgram():
         if not ret:
             break
 
-        ellipse_red, ellipse_yellow, ellipse_green = get_ellipses(img_hsv, img_bgr)
+        ellipse_red, ellipse_yellow, ellipse_green = fetchTrafficLightColours(img_hsv, img_bgr)
 
         if ellipse_red or ellipse_yellow or ellipse_green:
             process_ellipses(ellipse_red, ellipse_yellow, ellipse_green)
