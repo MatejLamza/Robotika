@@ -17,7 +17,7 @@ def runProgram():
         image, contours = cv2.findContours(thresh_gray, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         listCountours = list(contours)
         if len(listCountours) > 0:
-            max_cnt = helper.getBiggestContour(contours)
+            max_cnt = helper.getBiggestContour(listCountours)
             if helper.GetImageSize2(image) / 2.75 < cv2.contourArea(max_cnt) < helper.GetImageSize2(image) / 1.5:
                 _, _, angle = cv2.fitEllipse(max_cnt)
                 if 80 < angle < 100:

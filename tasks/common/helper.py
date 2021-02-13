@@ -26,7 +26,7 @@ def getMask(img, min_hue, max_hue,
 
 def getContours(mask, min_area=3000):
     _, thresh = cv2.threshold(mask, 127, 255, 0)
-    contours, _ = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)[1]
     return filter(lambda cnt: cv2.contourArea(cnt) > min_area, contours)
 
 
