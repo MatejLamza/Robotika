@@ -62,8 +62,7 @@ def getBiggestContour(contours):
 
 def detectSmile(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05,
-                                          minNeighbors=5, minSize=(200, 200))
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=5, minSize=(200, 200))
 
     for (x, y, w, h) in faces:
         cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
