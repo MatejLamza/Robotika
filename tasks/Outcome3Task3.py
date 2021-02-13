@@ -14,9 +14,7 @@ capture = cv2.VideoCapture(0)
 def runProgram():
     while True:
          _, imageBg, iamgeHsv = helper.videoConvert(capture)
-
         redLight, yellowLight, greenLight = fetchTrafficLightColours(ImageHsv, ImageBg)
-
         if redLight or yellowLight or greenLight:
             processTrafficLight(redLight, yellowLight, greenLight)
 
@@ -24,7 +22,7 @@ def runProgram():
         if(cv2.waitKey(1) & 0xFF) == ord('q'):
             break;
 
-    capture.release()
+        capture.release()
     cv2.destroyAllWindows()
 
 
