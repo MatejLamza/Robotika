@@ -34,9 +34,9 @@ def createEllipse(mask, image):
     mask_circle = getMask(image, 0, 180)
     contours_circle = getContours(mask_circle)
     contours_mask = getContours(mask)
-
-    for i in range(len(contours_mask)):
-        contour = contours_mask[i]
+    contourList = list(contours_mask)
+    for i in range(len(contourList)):
+        contour = contourList[i]
         if cv2.arcLength(contour, True) and cv2.contourArea(contour) > 2000:
             epsilon = 0.01 * cv2.arcLength(contour, True)
             approx = cv2.approxPolyDP(contour, epsilon, True)
