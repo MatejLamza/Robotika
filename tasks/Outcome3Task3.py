@@ -8,17 +8,23 @@ redLow2, redUp2 = 160, 180
 yellowLow, yellowUp = 16, 30
 greenLow, greenUp = 45, 75
 
-capture = cv2.VideoCapture(0)
 
 
 def runProgram():
     while True:
-         _, imageBg, iamgeHsv = helper.videoConvert(capture)
+        capture = cv2.VideoCapture(0)
+        ret, imageBg, iamgeHsv = helper.videoConvert(capture)
+
+        if not ret:
+            break;
+
         redLight, yellowLight, greenLight = fetchTrafficLightColours(ImageHsv, ImageBg)
+
         if redLight or yellowLight or greenLight:
             processTrafficLight(redLight, yellowLight, greenLight)
 
         cv2.imshow('Outcome 3 Task3', ImageBg)
+        
         if(cv2.waitKey(1) & 0xFF) == ord('q'):
             break;
 
