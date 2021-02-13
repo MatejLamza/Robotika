@@ -9,10 +9,10 @@ yellowLow, yellowUp = 16, 30
 greenLow, greenUp = 45, 75
 
 
+capture = cv2.VideoCapture(0)
 
 def runProgram():
     while True:
-        capture = cv2.VideoCapture(0)
         ret, imageBg, imageHsv = helper.videoConvert(capture)
 
         if not ret:
