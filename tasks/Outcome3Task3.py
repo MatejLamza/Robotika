@@ -13,7 +13,7 @@ greenLow, greenUp = 45, 75
 def runProgram():
     while True:
         capture = cv2.VideoCapture(0)
-        ret, imageBg, iamgeHsv = helper.videoConvert(capture)
+        ret, imageBg, imageHsv = helper.videoConvert(capture)
 
         if not ret:
             break;
@@ -24,7 +24,7 @@ def runProgram():
             processTrafficLight(redLight, yellowLight, greenLight)
 
         cv2.imshow('Outcome 3 Task3', ImageBg)
-        
+
         if(cv2.waitKey(1) & 0xFF) == ord('q'):
             break;
 
