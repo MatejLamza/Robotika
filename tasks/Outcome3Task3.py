@@ -33,7 +33,7 @@ def fetchTrafficLightColours(ImageHsv, ImageBg):
     redMask2 = helper.getMask(ImageHsv, redLow2, redUp2, min_sat=110, min_val=60)
     redMask = redMask1 | redMask2
 
-    redLight = cvh.create_ellipse(redMask, ImageBg)
+    redLight = helper.createEllipse(redMask, ImageBg)
 
     yellowMask = helper.getMask(ImageHsv, yellowLow, yellowUp, min_sat=110, min_val=60)
     yellowLight = helper.createEllipse(yellowMask, ImageBg)
