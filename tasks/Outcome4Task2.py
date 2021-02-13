@@ -10,7 +10,7 @@ upperb = np.array([135, 255, 255])
 
 center_treshold = 6
 
-capture = cv2.Videocaptureture(0)
+capture = cv2.VideoCapture(0)
 
 def runProgram():
     mt.rotateRightSlow()
