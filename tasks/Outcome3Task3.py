@@ -15,12 +15,12 @@ def runProgram():
     while True:
         _, imageBg, imgHsv = helper.videoConvert(capture)
 
-        redLight, yellowLight, greenLight = fetchTrafficLightColours(imgHsv, ImageBg)
+        redLight, yellowLight, greenLight = fetchTrafficLightColours(imgHsv, imageBg)
 
         if redLight or yellowLight or greenLight:
             processTrafficLight(redLight, yellowLight, greenLight)
 
-        cv2.imshow('Outcome 3 Task3', ImageBg)
+        cv2.imshow('Outcome 3 Task3', imageBg)
 
         if(cv2.waitKey(1) & 0xFF) == ord('q'):
             break;
