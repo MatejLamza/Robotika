@@ -68,8 +68,7 @@ def detectSmile(image):
         cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
         face_gray = gray[y:y + h, x:x + w]
         face_color = image[y:y + h, x:x + w]
-        smiles = smile_cascade.detectMultiScale(face_gray, scaleFactor=1.8,
-                                                minNeighbors=20, maxSize=(150, 150))
+        smiles = smile_cascade.detectMultiScale(face_gray, scaleFactor=1.8, minNeighbors=20, maxSize=(150, 150))
         for (ex, ey, ew, eh) in smiles:
             cv2.rectangle(face_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
             return True;
