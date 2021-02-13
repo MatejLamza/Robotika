@@ -8,11 +8,11 @@ redLow2, redUp2 = 160, 180
 yellowLow, yellowUp = 16, 30
 greenLow, greenUp = 45, 75
 
+capture = cv2.VideoCapture(0)
+
 
 def runProgram():
     while True:
-        capture = cv2.VideoCapture(0)
-
          _, imageBg, iamgeHsv = helper.videoConvert(capture)
 
         redLight, yellowLight, greenLight = fetchTrafficLightColours(ImageHsv, ImageBg)
