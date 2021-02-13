@@ -3,10 +3,10 @@ import numpy as np
 from datetime import datetime
 import time
 
-face_cascade = cv2.CascadeClassifier('/home/pi/Python/Robotics/robotika/resources/face.xml')
-smile_cascade = cv2.CascadeClassifier('/home/pi/Python/Robotics/robotika/resources/smile.xml')
+face_cascade = cv2.CascadeClassifier('/home/pi/Robotika/resources/face.xml')
+smile_cascade = cv2.CascadeClassifier('/home/pi/Robotika/resources/smile.xml')
 
-fps_list_path = "/home/pi/Python/Robotics/robotika/resources/fps_list.txt"
+fps_list_path = "/home/Robotika/resources/fps_list.txt"
 
 
 def videoConvert(capture):
